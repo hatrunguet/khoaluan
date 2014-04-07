@@ -119,23 +119,21 @@ class __TwigTemplate_863753afe6751b80bed89fd71829d8709a8ebd86352a786301ebd27a69f
         // line 46
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "user"), 'errors');
         echo "
-            </div>
-            <input type=\"text\" />
-            <a href=\"";
+                <a href=\"#\" onclick=\"window.open('";
+        // line 47
+        echo $this->env->getExtension('routing')->getPath("tableUser");
+        echo "','name','height=500,width=800')\">Tìm Nhanh</a>
+                ";
         // line 49
-        echo $this->env->getExtension('routing')->getPath("tableUser");
-        echo "\" onclick=\"return openInParent('";
-        echo $this->env->getExtension('routing')->getPath("tableUser");
-        echo "')\">Link to popup</a>
+        echo "            </div>
+            
         </div>
         <div class=\"form-actions text-right\">
              ";
-        // line 52
+        // line 53
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "submit"), 'widget', array("attr" => array("class" => "btn btn-primary")));
         echo "
-            ";
-        // line 54
-        echo "        </div>
+        </div>
     </div>
 </div>
 ";
@@ -143,13 +141,6 @@ class __TwigTemplate_863753afe6751b80bed89fd71829d8709a8ebd86352a786301ebd27a69f
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
 
-<script>
-  function openInParent(url) {
-        newwindow=window.open(url,'name','height=600,width=600');
-\tif (window.focus) {newwindow.focus()}
-\treturn false;
-  }
-</script>
 ";
     }
 
@@ -165,6 +156,6 @@ class __TwigTemplate_863753afe6751b80bed89fd71829d8709a8ebd86352a786301ebd27a69f
 
     public function getDebugInfo()
     {
-        return array (  143 => 57,  138 => 54,  134 => 52,  126 => 49,  120 => 46,  116 => 45,  111 => 43,  100 => 38,  95 => 36,  79 => 29,  72 => 25,  68 => 24,  63 => 22,  52 => 17,  44 => 14,  34 => 9,  57 => 13,  49 => 10,  38 => 11,  35 => 6,  31 => 5,  26 => 3,  23 => 2,  19 => 1,  219 => 87,  213 => 69,  208 => 68,  204 => 22,  201 => 21,  187 => 88,  185 => 87,  166 => 70,  164 => 68,  148 => 55,  142 => 52,  119 => 31,  112 => 29,  109 => 28,  101 => 29,  98 => 28,  91 => 29,  88 => 32,  81 => 29,  78 => 28,  73 => 23,  71 => 21,  58 => 10,  28 => 5,  22 => 1,  183 => 61,  175 => 56,  170 => 53,  153 => 50,  149 => 49,  145 => 48,  141 => 47,  137 => 46,  132 => 45,  128 => 43,  124 => 41,  121 => 40,  104 => 39,  84 => 31,  80 => 21,  74 => 18,  64 => 10,  61 => 9,  56 => 18,  50 => 6,  47 => 15,  40 => 6,  37 => 5,  32 => 8,  29 => 2,);
+        return array (  141 => 57,  134 => 53,  128 => 49,  124 => 47,  120 => 46,  116 => 45,  111 => 43,  104 => 39,  100 => 38,  95 => 36,  88 => 32,  84 => 31,  79 => 29,  72 => 25,  68 => 24,  63 => 22,  56 => 18,  52 => 17,  47 => 15,  44 => 14,  38 => 11,  34 => 9,  32 => 8,  23 => 2,  19 => 1,);
     }
 }

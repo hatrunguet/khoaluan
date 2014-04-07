@@ -16,12 +16,16 @@ class VaitroxulyType extends AbstractType{
         ))     
         ->add('user','entity',array(
             'class'=>'AcmePermissionBundle:User',
-            'property'=>'username',
+            'property'=>'id',
             'label'=>'User',
-            'attr' => array('class'=>'styled'),
-//            'multiple'=>FALSE,
-//            'expanded'=>FALSE
+            'attr' => array('class'=>'styled')
         ))             
+//          ->add('user','text',array(
+//            'label'=>'Username:',
+//            'attr'=>array(
+//                'class'=>'form-control'
+//            )
+//        ))
         ->add('tthc', new TTHCType())
         ->add('submit','submit')
             ;

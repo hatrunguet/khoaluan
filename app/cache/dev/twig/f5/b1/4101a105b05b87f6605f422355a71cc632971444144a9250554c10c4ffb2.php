@@ -120,12 +120,25 @@ class __TwigTemplate_f5b14101a105b05b87f6605f422355a71cc632971444144a9250554c10c
 ";
         // line 26
         $this->displayBlock('content', $context, $blocks);
-        // line 66
-        echo "         <script>
-     function ship(radio) {
-    var n1 = document.getElementById('username_field');
-    var button = document.getElementById(radio);
-    n1.value = button.value;
+        // line 67
+        echo "<script>
+    function xong() 
+    { 
+\tvar radios = document.getElementsByName('form[vaitro]');
+
+\tfor (var i = 0, length = radios.length; i < length; i++) {
+\t    if (radios[i].checked) {
+\t        // do whatever you want with the checked radio
+\t        opener.document.getElementById('vaitroxuly_user').value= radios[i].value;
+                //opener.document.getElementById('vaitroxuly_user').value= radios[i].id;
+    \t\tclose();
+\t        // only one radio can be logically checked, don't check the rest
+\t        break;
+\t    }
+\t}
+    }  
+    function closewindow(){
+\twindow.close();
 }
      </script>
 ";
@@ -216,16 +229,14 @@ class __TwigTemplate_f5b14101a105b05b87f6605f422355a71cc632971444144a9250554c10c
         echo "                            </table>
                         </div>            
                         <div class=\"form-actions text-right\">
-                            ";
-        // line 59
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), "submit"), 'widget', array("attr" => array("class" => "btn btn-primary")));
-        echo "
+                            <input type=\"button\" value=\"Chọn\" onclick=\"xong();\" />  
+                            <input type=\"button\" value=\"Đóng\" onclick=\"closewindow();\" />
                         </div>
                     </div>
                 </div>
             </div>
             ";
-        // line 64
+        // line 65
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_end');
         echo "
 ";
@@ -243,6 +254,6 @@ class __TwigTemplate_f5b14101a105b05b87f6605f422355a71cc632971444144a9250554c10c
 
     public function getDebugInfo()
     {
-        return array (  229 => 64,  221 => 59,  216 => 56,  199 => 53,  195 => 52,  190 => 51,  186 => 49,  182 => 47,  179 => 46,  162 => 45,  151 => 36,  143 => 28,  138 => 27,  135 => 26,  124 => 66,  122 => 26,  119 => 25,  112 => 23,  109 => 22,  101 => 23,  98 => 22,  91 => 23,  88 => 22,  81 => 23,  78 => 22,  71 => 23,  68 => 22,  64 => 17,  51 => 6,  25 => 5,  20 => 1,);
+        return array (  240 => 65,  229 => 56,  212 => 53,  208 => 52,  203 => 51,  199 => 49,  195 => 47,  192 => 46,  175 => 45,  164 => 36,  156 => 28,  151 => 27,  148 => 26,  124 => 67,  122 => 26,  119 => 25,  112 => 23,  109 => 22,  101 => 23,  98 => 22,  91 => 23,  88 => 22,  81 => 23,  78 => 22,  71 => 23,  68 => 22,  64 => 17,  51 => 6,  25 => 5,  20 => 1,);
     }
 }

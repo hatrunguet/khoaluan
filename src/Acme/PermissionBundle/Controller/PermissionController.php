@@ -77,6 +77,7 @@ class PermissionController extends Controller
     public function createVaitroAction(Request $request)
     {
         $vaitro = new \Acme\PermissionBundle\Entity\Vaitroxuly();
+        $u = new \Acme\PermissionBundle\Entity\User();
         $form = $this->createForm(new VaitroxulyType(),$vaitro,array(
             'action'=>  $this->generateUrl('createVaitro')
         ));
@@ -84,6 +85,7 @@ class PermissionController extends Controller
         if ($form->isValid()){            
             $em = $this->getDoctrine()->getManager();
             $tthc = $form->getData();
+            $user = $form->get('user')->getData();
             $em->persist($tthc->getTthc());
             $em->persist($vaitro);
             $em->flush();
