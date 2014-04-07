@@ -130,3 +130,16 @@ f1d1cd,::1,GET,http://localhost/permission/web/app_dev.php/function/permission,1
 b1a23c,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253ADefault%253AgroupFuncView,1396884271,f9d5cd
 8f8967,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateVaitro,1396884271,f9d5cd
 f9d5cd,::1,GET,http://localhost/permission/web/app_dev.php/function/permission,1396884271,
+926b98,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253ADefault%253AgroupFuncView,1396884630,c0d559
+834c94,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateVaitro,1396884631,c0d559
+c0d559,::1,GET,http://localhost/permission/web/app_dev.php/function/permission,1396884631,
+02117e,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253ADefault%253AgroupFuncView,1396884635,9b173e
+1ea248,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateUser,1396884635,9b173e
+90709d,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateLinhvuc,1396884635,9b173e
+9f36b8,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateTTHC,1396884635,9b173e
+9b173e,::1,GET,http://localhost/permission/web/app_dev.php/function/initial,1396884635,
+d17097,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253ADefault%253AgroupFuncView,1396884664,850eea
+a1586a,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateUser,1396884664,850eea
+7dffbc,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateLinhvuc,1396884664,850eea
+bfac18,127.0.0.1,GET,http://localhost/permission/web/app_dev.php/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DAcmePermissionBundle%253APermission%253AcreateTTHC,1396884664,850eea
+850eea,::1,GET,http://localhost/permission/web/app_dev.php/function/initial,1396884664,

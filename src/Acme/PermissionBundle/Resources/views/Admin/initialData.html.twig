@@ -12,8 +12,8 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#inside" data-toggle="tab"><i class="icon-checkbox-partial"></i> Tạo mới người dùng</a></li>
         <li class=""><a href="#outside" data-toggle="tab"><i class="icon-checkbox-unchecked"></i> Tạo mới lĩnh vực hành chính</a></li>
-        {#<li class=""><a href="#advanced" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới thủ tục hành chính</a></li>
-        <li class=""><a href="#front" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới chức năng</a></li>
+        <li class=""><a href="#advanced" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới thủ tục hành chính</a></li>
+        {#<li class=""><a href="#front" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo mới chức năng</a></li>
         <li class=""><a href="#vaitroxuly" data-toggle="tab"><i class="icon-checkmark3"></i> Tạo thủ tục hành chính & vai trò xử lý</a></li>#}
       </ul>
       <div class="tab-content">
@@ -24,10 +24,10 @@
         <div class="tab-pane fade" id="outside">
             {{ render(controller('AcmePermissionBundle:Permission:createLinhvuc'))}}
         </div>
-        {#<div class="tab-pane fade" id="advanced">
+        <div class="tab-pane fade" id="advanced">
             {{ render(controller('AcmePermissionBundle:Permission:createTTHC'))}}
          </div>
-        <div class="tab-pane fade" id="front">
+       {# <div class="tab-pane fade" id="front">
             {{ render(controller('AcmePermissionBundle:Permission:createFunc'))}}
          </div>
         <div class="tab-pane fade" id="vaitroxuly">
