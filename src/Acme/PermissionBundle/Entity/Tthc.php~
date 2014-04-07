@@ -1,0 +1,107 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Tthc
+ *
+ * @ORM\Table(name="tthc", indexes={@ORM\Index(name="FK_TTHC_DichVu_idx", columns={"idLinhVuc"}), @ORM\Index(name="FK_TTHC_DVThuLy_idx", columns={"idDonViThuLy"}), @ORM\Index(name="FK_TTHC_DinhKem_idx", columns={"idDinhKem"}), @ORM\Index(name="FK_TTHC_VBLQ_idx", columns={"idVanBanLienQuan"})})
+ * @ORM\Entity
+ */
+class Tthc
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NameTTHC", type="string", length=45, nullable=false)
+     */
+    private $nametthc;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NoiDungThucHien", type="string", length=255, nullable=true)
+     */
+    private $noidungthuchien;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="GiayToHoSo", type="string", length=45, nullable=true)
+     */
+    private $giaytohoso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ThoiGianGiaiQuyet", type="string", length=45, nullable=true)
+     */
+    private $thoigiangiaiquyet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PhanQuyen", type="integer", nullable=true)
+     */
+    private $phanquyen;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="IsHide", type="boolean", nullable=true)
+     */
+    private $ishide;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idTTHC", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idtthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Vanbanlienquan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Vanbanlienquan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idVanBanLienQuan", referencedColumnName="idVanBanLienQuan")
+     * })
+     */
+    private $idvanbanlienquan;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Dinhkemtthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDinhKem", referencedColumnName="idDinhKemTTHC")
+     * })
+     */
+    private $iddinhkem;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Donvithuly
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDonViThuLy", referencedColumnName="idDonViThuLy")
+     * })
+     */
+    private $iddonvithuly;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Linhvuc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Linhvuc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idLinhVuc", referencedColumnName="idLinhVuc")
+     * })
+     */
+    private $idlinhvuc;
+
+
+}

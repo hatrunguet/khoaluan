@@ -1,0 +1,59 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Functions
+ *
+ * @ORM\Table(name="functions", indexes={@ORM\Index(name="fk_Function_GroupFunction1_idx", columns={"GroupFunction"}), @ORM\Index(name="fk_Function_Role1_idx", columns={"Role"})})
+ * @ORM\Entity
+ */
+class Functions
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=45, nullable=false)
+     */
+    private $path;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idFunction", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idfunction;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Role
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Role")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Role", referencedColumnName="id")
+     * })
+     */
+    private $role;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Groupfunction
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Groupfunction", inversedBy="functions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GroupFunction", referencedColumnName="idGroupFunction")
+     * })
+     */
+    private $groupfunction;
+
+
+}

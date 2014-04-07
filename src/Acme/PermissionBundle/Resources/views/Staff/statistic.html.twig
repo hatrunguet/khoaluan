@@ -1,0 +1,41 @@
+{% extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+{% block javascript%}
+    {% javascripts 
+                    '@AcmePermissionBundle/Resources/public/lanhdao/js/plugins/interface/datatables.min.js'        
+    %}        
+     <script type="text/javascript" src="{{ asset_url }}"></script>        
+    {% endjavascripts %}     
+{%endblock%}
+{%block content %}
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-table"></i> Bảng phân quyền</h6>
+    </div>
+    <div class="datatable">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <td>Id</td>
+                        <td>User</td>
+                        <td>TTHC</td>
+                        <td>Ngày nhận</td>                                                
+                    </thead>
+                {% for profile in profiles%}
+                    {% if loop.index %2 == 0 %}
+                    <tr class="odd">
+                    {% else %}
+                    <tr class="even">
+                    {% endif%}
+                        <td>{{profile.id}}</td>
+                        <td>{{profile.user.username}}</td>
+                        <td>{{profile.tthc.name}}</td>
+                        <td>{{profile.ngaynhanhs}}</td>
+                    </tr>
+                {%endfor%}
+                </table>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock%}

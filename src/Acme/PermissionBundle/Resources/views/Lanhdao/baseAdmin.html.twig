@@ -1,0 +1,99 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dịch Vụ Công - Khóa Luận Tốt Nghiệp</title>
+		<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+{% stylesheets 
+            'bundles/acmepermission/khoaluan/css/style.css' 
+            'bundles/acmepermission/khoaluan/css/bootstrap.min.css'  
+            'bundles/acmepermission/khoaluan/css/color_1.css' 
+             'bundles/acmepermission/khoaluan//css/DT_bootstrap.css'
+         filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}  
+{% javascripts 
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/jquery.min.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/bootstrap.min.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/ebro_datatables.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/jquery.dataTables.min.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/DT_bootstrap.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/JMenu.jquery.js'
+                        '@AcmePermissionBundle/Resources/public/khoaluan/js/jquery.ba-resize.min.js'
+        %}
+        
+         <script type="text/javascript" src="{{ asset_url }}"></script>
+        
+        {% endjavascripts %}       
+	</head>
+	<body class="boxed pattern_1">
+		
+		<div id="wrapper_all">
+			<header id="top_header">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6 col-sm-2">
+							<a href="dashboard1.html" class="logo_main" title="Phân Hệ Lãnh Đạo">Phân Hệ Lãnh Đạo</a>
+						</div>
+						<div class="col-sm-push-4 col-sm-3 text-right hidden-xs">
+							
+						</div>
+						<div class="col-xs-6 col-sm-push-4 col-sm-3">
+							<div class="pull-right dropdown">
+								<a class="user_info dropdown-toggle" data-toggle="dropdown">
+									<span>Xin Chào {{app.user.username}}</span>
+									
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Profile</a></li>
+									<li><a href="{{path('logout')}}">Log Out</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-pull-6 col-sm-4">
+							
+						</div>
+					</div>
+				</div>
+			</header>						
+			<section class="container clearfix main_section">
+				<div id="main_content_outer" class="clearfix">
+					<div id="main_content">
+						 {% block content %}{% endblock %}
+					</div>
+				</div>
+
+				<nav id="sidebar">
+                                    <ul id="text_nav_v" class="side_text_nav">
+                                    {% block control%}            
+                                       {{ render(controller('AcmePermissionBundle:Default:menuCreate'))}}
+                                    {%endblock%} 
+                                        </ul>	
+                                </nav>
+			</section>
+			<div id="footer_space"></div>
+		</div>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        &copy; 2014 Khóa Luận Tốt Nghiệp
+                    </div>
+                    <div class="col-sm-8">
+                        <ul>
+                            <li><a href="#">Trang Chủ</a></li>
+                            <li>&middot;</li>
+                            <li><a href="#">Hướng Dẫn</a></li>
+                            <li>&middot;</li>
+                            <li><a href="#">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-1 text-right">
+                        
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</body>
+</html>

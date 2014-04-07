@@ -1,0 +1,60 @@
+{# empty Twig template #}
+{%extends "AcmePermissionBundle::Admin/baseAdmin.html.twig"%}
+
+{% block content%}
+{{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+{{ form_errors(form) }}
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h6 class="panel-title"><i class="icon-bubble4"></i> Sửa đổi vai trò xử lý</h6>
+    </div>
+    <div class="panel-body">
+        {% if alert|default is not empty %}
+        <div class="alert alert-success fade in block-inner">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{alert}}
+        </div>
+        {% endif%}
+        <div class="form-group">
+            {{ form_label(form.tthc.nametthc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.tthc.nametthc,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.nametthc) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tthc.idlinhvuc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.tthc.idlinhvuc,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.idlinhvuc) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tthc.iddonvithuly, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.tthc.iddonvithuly,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.iddonvithuly) }}
+            </div>
+        </div>
+         <div class="form-group">
+            {{ form_label(form.vaitro, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.vaitro,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.vaitro) }}
+            </div>
+        </div>
+         <div class="form-group">
+            {{ form_label(form.user, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.user,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.user) }}
+            </div>
+        </div>
+        <div class="form-actions text-right">
+             {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}
+            {#<button type="submit" class="btn btn-primary">Submit</button>#}
+        </div>
+    </div>
+</div>
+{{form_end(form)}}
+{%endblock%}

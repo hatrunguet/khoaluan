@@ -1,0 +1,13 @@
+{% for g in gfunctions%}
+    <li>
+       <a class="expand"><span>{{g.name}}</span></a>
+            <ul>
+                {% for f in g.functions %}
+                <li>
+                   <a href="{{path(f.path)}}" class="expand"><span>{{f.name}}</span></a>
+                </li>
+                {% endfor%}
+            </ul>
+    </li>    
+{% endfor%}
+

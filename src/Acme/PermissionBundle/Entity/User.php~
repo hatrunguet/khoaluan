@@ -1,0 +1,85 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="isActive_UNIQUE", columns={"isActive"})}, indexes={@ORM\Index(name="fk_User_Thontincanhan1_idx", columns={"Thontincanhan_id"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=45, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isActive", type="boolean", nullable=true)
+     */
+    private $isactive;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Thontincanhan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Thontincanhan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Thontincanhan_id", referencedColumnName="id")
+     * })
+     */
+    private $thontincanhan;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Acme\PermissionBundle\Entity\Role", inversedBy="user")
+     * @ORM\JoinTable(name="user_has_role",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="User_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Role_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $role;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

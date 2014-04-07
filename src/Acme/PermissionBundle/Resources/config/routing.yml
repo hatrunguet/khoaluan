@@ -1,0 +1,52 @@
+acme_permission_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmePermissionBundle:Default:index }
+admin:
+    pattern:  /function
+    defaults: { _controller: AcmePermissionBundle:Default:index }
+permission:
+    pattern:  /function/permission
+    defaults: { _controller: AcmePermissionBundle:Permission:permission }
+createUser:
+    pattern:  /function/createUser
+    defaults: { _controller: AcmePermissionBundle:Permission:createUser }
+createTTHC:
+    pattern:  /function/createTTHC
+    defaults: { _controller: AcmePermissionBundle:Permission:createTTHC }   
+createLinhvuc:
+    pattern:  /function/createLinhvuc
+    defaults: { _controller: AcmePermissionBundle:Permission:createLinhvuc }
+createVaitro:
+    pattern:  /function/createVaitro
+    defaults: { _controller: AcmePermissionBundle:Permission:createVaitro }  
+createFunc:
+    pattern:  /function/createFunc
+    defaults: { _controller: AcmePermissionBundle:Permission:createFunc }      
+initialData:
+    pattern:  /function/initial
+    defaults: { _controller: AcmePermissionBundle:Permission:intinialData }
+editPermission:
+    pattern:  /function/editPermission/{id}
+    defaults: { _controller: AcmePermissionBundle:Permission:editPermission }    
+    requirements:
+        id: \d+
+addPermission:
+    pattern:  /function/addPermission/{id}
+    defaults: { _controller: AcmePermissionBundle:Permission:addPermission }        
+    requirements:
+        id: \d+
+statistic:
+    pattern:  /function/statistic
+    defaults: { _controller: AcmePermissionBundle:Permission:statistic }   
+statisticProfile:
+    pattern:  /function/statisticProfile
+    defaults: { _controller: AcmePermissionBundle:Staff:statisticProfile }       
+xulyhoso:
+    pattern:  /function/xulyhoso
+    defaults: { _controller: AcmePermissionBundle:Lanhdao:xulyhoso }  
+thongkehoso:
+    pattern:  /function/thongkehoso
+    defaults: { _controller: AcmePermissionBundle:Lanhdao:thongkehoso }
+tableUser:
+    pattern:  /function/tableuser
+    defaults: { _controller: AcmePermissionBundle:Permission:tableUser }    

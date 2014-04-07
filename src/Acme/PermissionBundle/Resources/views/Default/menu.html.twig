@@ -1,0 +1,7 @@
+{% for function in functions%}
+    {% for g in function.groupfunction %}
+            <li>
+                   <a href="{{path(function.path)}}" class="expand"><span>{{function.name}}</span></a>
+            </li>
+    {% endfor%}
+{% endfor%}

@@ -1,0 +1,53 @@
+<?php
+
+namespace Acme\PermissionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Groupfunction
+ *
+ * @ORM\Table(name="groupfunction")
+ * @ORM\Entity
+ */
+class Groupfunction
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=45, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idGroupFunction", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idgroupfunction;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Functions", mappedBy="groupfunction")
+     */
+    private $functions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->functions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}
