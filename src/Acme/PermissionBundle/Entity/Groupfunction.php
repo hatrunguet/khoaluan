@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Groupfunction
  *
- * @ORM\Table(name="groupfunction")
+ * @ORM\Table(name="groupfunction", indexes={@ORM\Index(name="fk_GroupFunction_Role1_idx", columns={"Role"})})
  * @ORM\Entity
  */
 class Groupfunction
@@ -41,6 +41,16 @@ class Groupfunction
      * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Functions", mappedBy="groupfunction")
      */
     private $functions;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Role
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Role", inversedBy="groupfunction")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Role", referencedColumnName="id")
+     * })
+     */
+    private $role;
 
     /**
      * Constructor
@@ -138,5 +148,28 @@ class Groupfunction
     public function getFunctions()
     {
         return $this->functions;
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Acme\PermissionBundle\Entity\Role $role
+     * @return Groupfunction
+     */
+    public function setRole(\Acme\PermissionBundle\Entity\Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Acme\PermissionBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }

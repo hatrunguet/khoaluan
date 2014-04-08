@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2014 at 05:21 PM
+-- Generation Time: Apr 08, 2014 at 01:14 PM
 -- Server version: 5.5.36
 -- PHP Version: 5.4.25
 
@@ -131,25 +131,22 @@ CREATE TABLE IF NOT EXISTS `faq` (
 --
 
 CREATE TABLE IF NOT EXISTS `functions` (
-  `idFunction` int(11) NOT NULL AUTO_INCREMENT,
+  `idFunctions` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `path` varchar(45) NOT NULL,
   `GroupFunction` int(11) NOT NULL,
-  `Role` int(11) NOT NULL,
-  PRIMARY KEY (`idFunction`),
-  KEY `fk_Function_GroupFunction1_idx` (`GroupFunction`),
-  KEY `fk_Function_Role1_idx` (`Role`)
+  PRIMARY KEY (`idFunctions`),
+  KEY `fk_Function_GroupFunction1_idx` (`GroupFunction`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `functions`
 --
 
-INSERT INTO `functions` (`idFunction`, `name`, `path`, `GroupFunction`, `Role`) VALUES
-(1, 'Khởi Tạo Dữ Liệu', 'initialData', 1, 1),
-(2, 'Thống Kê Người Dùng', 'statistic', 1, 1),
-(3, 'Xử Lý Hồ Sơ', 'xulyhoso', 2, 2),
-(4, 'Phân Quyền', 'permission', 1, 1);
+INSERT INTO `functions` (`idFunctions`, `name`, `path`, `GroupFunction`) VALUES
+(1, 'Khởi Tạo Dữ Liệu', 'initialData', 1),
+(3, 'Xử Lý Hồ Sơ', 'xulyhoso', 2),
+(4, 'Phân Quyền TTHC', 'permission', 1);
 
 -- --------------------------------------------------------
 
@@ -161,16 +158,18 @@ CREATE TABLE IF NOT EXISTS `groupfunction` (
   `idGroupFunction` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `description` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idGroupFunction`)
+  `Role` int(11) NOT NULL,
+  PRIMARY KEY (`idGroupFunction`),
+  KEY `fk_GroupFunction_Role1_idx` (`Role`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `groupfunction`
 --
 
-INSERT INTO `groupfunction` (`idGroupFunction`, `name`, `description`) VALUES
-(1, 'Nhóm Chức Năng Admin', 'admin'),
-(2, 'Nhóm Chức Năng Lãnh Đạo', 'lanhdao');
+INSERT INTO `groupfunction` (`idGroupFunction`, `name`, `description`, `Role`) VALUES
+(1, 'Nhóm Chức Năng Admin', 'admin', 1),
+(2, 'Nhóm Chức Năng Lãnh Đạo', 'lanhdao', 2);
 
 -- --------------------------------------------------------
 
@@ -250,7 +249,17 @@ CREATE TABLE IF NOT EXISTS `quyenhan` (
   `name` varchar(45) NOT NULL,
   `mota` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `quyenhan`
+--
+
+INSERT INTO `quyenhan` (`id`, `name`, `mota`) VALUES
+(1, 'Niêm Yết', NULL),
+(2, 'Tiếp Nhận', NULL),
+(3, 'Xử Lý', NULL),
+(4, 'Theo Dõi', NULL);
 
 -- --------------------------------------------------------
 
@@ -268,7 +277,14 @@ CREATE TABLE IF NOT EXISTS `quyentthc` (
   KEY `fk_QuyenTTHC_User1_idx` (`User`),
   KEY `fk_QuyenTTHC_TTHC1_idx` (`TTHC`),
   KEY `fk_QuyenTTHC_Quyenhan1_idx` (`Quyenhan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `quyentthc`
+--
+
+INSERT INTO `quyentthc` (`id`, `mota`, `User`, `TTHC`, `Quyenhan`) VALUES
+(1, NULL, 1, 6, 2);
 
 -- --------------------------------------------------------
 
@@ -278,9 +294,8 @@ CREATE TABLE IF NOT EXISTS `quyentthc` (
 
 CREATE TABLE IF NOT EXISTS `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `role` varchar(45) NOT NULL,
-  `mota` varchar(45) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `role` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -288,10 +303,32 @@ CREATE TABLE IF NOT EXISTS `role` (
 -- Dumping data for table `role`
 --
 
-INSERT INTO `role` (`id`, `name`, `role`, `mota`) VALUES
-(1, 'Admin', 'ROLE_ADMIN', NULL),
-(2, 'Lãnh Đạo', 'ROLE_LANHDAO', NULL),
-(3, 'Người Xử Lý', 'ROLE_XULY', NULL);
+INSERT INTO `role` (`id`, `name`, `role`) VALUES
+(1, 'Admin', 'ROLE_ADMIN'),
+(2, 'Lãnh Đạo', 'ROLE_LANHDAO'),
+(3, 'Người Xử Lý', 'ROLE_XULY');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_has_functions`
+--
+
+CREATE TABLE IF NOT EXISTS `role_has_functions` (
+  `Role_id` int(11) NOT NULL,
+  `Functions_idFunctions` int(11) NOT NULL,
+  PRIMARY KEY (`Role_id`,`Functions_idFunctions`),
+  KEY `fk_Role_has_Functions_Functions1_idx` (`Functions_idFunctions`),
+  KEY `fk_Role_has_Functions_Role1_idx` (`Role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `role_has_functions`
+--
+
+INSERT INTO `role_has_functions` (`Role_id`, `Functions_idFunctions`) VALUES
+(1, 1),
+(1, 4);
 
 -- --------------------------------------------------------
 
@@ -355,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `tthc` (
   KEY `FK_TTHC_DVThuLy_idx` (`idDonViThuLy`),
   KEY `FK_TTHC_DinhKem_idx` (`idDinhKem`),
   KEY `FK_TTHC_VBLQ_idx` (`idVanBanLienQuan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tthc`
@@ -365,7 +402,9 @@ INSERT INTO `tthc` (`idTTHC`, `NameTTHC`, `idLinhVuc`, `idDonViThuLy`, `NoiDungT
 (1, 'Cấp Phép Đất Đai', 1, 1, 'Cấp Phép Đất Đai', 'Cấp Phép Đất Đai', '3 ngày', NULL, NULL, 1, 1),
 (2, 'trung', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'Tái Xử Dụng Đất Update', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Cải Tạo Đất', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(4, 'Cải Tạo Đất', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'ha duc trung 123', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Xin Mở Rộng Đất', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -379,22 +418,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(45) NOT NULL,
   `email` varchar(45) DEFAULT NULL,
   `isActive` tinyint(1) DEFAULT NULL,
-  `Thontincanhan_id` int(11) NOT NULL,
+  `Thontincanhan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `isActive_UNIQUE` (`isActive`),
-  KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan_id`)
+  KEY `fk_User_Thontincanhan1_idx` (`Thontincanhan`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `isActive`, `Thontincanhan_id`) VALUES
-(1, 'admin', '123', NULL, NULL, 1),
-(2, 'admin1', '123', NULL, NULL, 1),
-(3, 'lanhdao12', '123', NULL, NULL, 1),
-(4, 'ket', '123', NULL, NULL, 1),
-(5, 'vi', '123', NULL, NULL, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `isActive`, `Thontincanhan`) VALUES
+(1, 'admin', '123', NULL, NULL, NULL),
+(2, 'admin1', '123', NULL, NULL, NULL),
+(3, 'lanhdao12', '123', NULL, NULL, NULL),
+(4, 'ket', '123', NULL, NULL, NULL),
+(5, 'vi', '123', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -452,21 +491,22 @@ INSERT INTO `vaitro` (`id`, `name`, `mota`) VALUES
 CREATE TABLE IF NOT EXISTS `vaitroxuly` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `User` int(11) NOT NULL,
-  `TTHC` int(11) NOT NULL,
   `Vaitro` int(11) NOT NULL,
+  `HoSoTTHC` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Vaitroxuly_User1_idx` (`User`),
-  KEY `fk_Vaitroxuly_TTHC1_idx` (`TTHC`),
-  KEY `fk_Vaitroxuly_Vaitro1_idx` (`Vaitro`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  KEY `fk_Vaitroxuly_Vaitro1_idx` (`Vaitro`),
+  KEY `fk_Vaitroxuly_HoSoTTHC1_idx` (`HoSoTTHC`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `vaitroxuly`
 --
 
-INSERT INTO `vaitroxuly` (`id`, `User`, `TTHC`, `Vaitro`) VALUES
-(2, 1, 3, 1),
-(3, 5, 4, 1);
+INSERT INTO `vaitroxuly` (`id`, `User`, `Vaitro`, `HoSoTTHC`) VALUES
+(2, 1, 1, 0),
+(3, 5, 1, 0),
+(4, 5, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -501,8 +541,13 @@ ALTER TABLE `faq`
 -- Constraints for table `functions`
 --
 ALTER TABLE `functions`
-  ADD CONSTRAINT `fk_Function_GroupFunction1` FOREIGN KEY (`GroupFunction`) REFERENCES `groupfunction` (`idGroupFunction`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Function_Role1` FOREIGN KEY (`Role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Function_GroupFunction1` FOREIGN KEY (`GroupFunction`) REFERENCES `groupfunction` (`idGroupFunction`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `groupfunction`
+--
+ALTER TABLE `groupfunction`
+  ADD CONSTRAINT `fk_GroupFunction_Role1` FOREIGN KEY (`Role`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `hoidaptt`
@@ -532,6 +577,13 @@ ALTER TABLE `quyentthc`
   ADD CONSTRAINT `fk_QuyenTTHC_User1` FOREIGN KEY (`User`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `role_has_functions`
+--
+ALTER TABLE `role_has_functions`
+  ADD CONSTRAINT `fk_Role_has_Functions_Role1` FOREIGN KEY (`Role_id`) REFERENCES `role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Role_has_Functions_Functions1` FOREIGN KEY (`Functions_idFunctions`) REFERENCES `functions` (`idFunctions`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `tinhtrangthuly`
 --
 ALTER TABLE `tinhtrangthuly`
@@ -550,7 +602,7 @@ ALTER TABLE `tthc`
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `fk_User_Thontincanhan1` FOREIGN KEY (`Thontincanhan_id`) REFERENCES `thontincanhan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_User_Thontincanhan1` FOREIGN KEY (`Thontincanhan`) REFERENCES `thontincanhan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user_has_role`
@@ -563,7 +615,7 @@ ALTER TABLE `user_has_role`
 -- Constraints for table `vaitroxuly`
 --
 ALTER TABLE `vaitroxuly`
-  ADD CONSTRAINT `fk_Vaitroxuly_TTHC1` FOREIGN KEY (`TTHC`) REFERENCES `tthc` (`idTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Vaitroxuly_HoSoTTHC1` FOREIGN KEY (`HoSoTTHC`) REFERENCES `hosotthc` (`idHoSoTTHC`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Vaitroxuly_User1` FOREIGN KEY (`User`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Vaitroxuly_Vaitro1` FOREIGN KEY (`Vaitro`) REFERENCES `vaitro` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 

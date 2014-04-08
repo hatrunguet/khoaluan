@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vaitroxuly
  *
- * @ORM\Table(name="vaitroxuly", indexes={@ORM\Index(name="fk_Vaitroxuly_User1_idx", columns={"User"}), @ORM\Index(name="fk_Vaitroxuly_TTHC1_idx", columns={"TTHC"}), @ORM\Index(name="fk_Vaitroxuly_Vaitro1_idx", columns={"Vaitro"})})
+ * @ORM\Table(name="vaitroxuly", indexes={@ORM\Index(name="fk_Vaitroxuly_User1_idx", columns={"User"}), @ORM\Index(name="fk_Vaitroxuly_Vaitro1_idx", columns={"Vaitro"}), @ORM\Index(name="fk_Vaitroxuly_HoSoTTHC1_idx", columns={"HoSoTTHC"})})
  * @ORM\Entity
  */
 class Vaitroxuly
@@ -32,16 +32,6 @@ class Vaitroxuly
     private $vaitro;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Tthc
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="TTHC", referencedColumnName="idTTHC")
-     * })
-     */
-    private $tthc;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\User")
@@ -50,6 +40,16 @@ class Vaitroxuly
      * })
      */
     private $user;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Hosotthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Hosotthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="HoSoTTHC", referencedColumnName="idHoSoTTHC")
+     * })
+     */
+    private $hosotthc;
 
 
 
@@ -87,29 +87,6 @@ class Vaitroxuly
     }
 
     /**
-     * Set tthc
-     *
-     * @param \Acme\PermissionBundle\Entity\Tthc $tthc
-     * @return Vaitroxuly
-     */
-    public function setTthc(\Acme\PermissionBundle\Entity\Tthc $tthc = null)
-    {
-        $this->tthc = $tthc;
-
-        return $this;
-    }
-
-    /**
-     * Get tthc
-     *
-     * @return \Acme\PermissionBundle\Entity\Tthc 
-     */
-    public function getTthc()
-    {
-        return $this->tthc;
-    }
-
-    /**
      * Set user
      *
      * @param \Acme\PermissionBundle\Entity\User $user
@@ -130,5 +107,28 @@ class Vaitroxuly
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set hosotthc
+     *
+     * @param \Acme\PermissionBundle\Entity\Hosotthc $hosotthc
+     * @return Vaitroxuly
+     */
+    public function setHosotthc(\Acme\PermissionBundle\Entity\Hosotthc $hosotthc = null)
+    {
+        $this->hosotthc = $hosotthc;
+
+        return $this;
+    }
+
+    /**
+     * Get hosotthc
+     *
+     * @return \Acme\PermissionBundle\Entity\Hosotthc 
+     */
+    public function getHosotthc()
+    {
+        return $this->hosotthc;
     }
 }

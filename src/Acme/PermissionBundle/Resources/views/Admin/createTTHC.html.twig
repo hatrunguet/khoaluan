@@ -1,9 +1,8 @@
-
 {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
 {{ form_errors(form) }}
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h6 class="panel-title"><i class="icon-bubble4"></i> Tạo mới thủ tục hành chính</h6>
+        <h6 class="panel-title"><i class="icon-bubble4"></i> Tạo mới TTHC</h6>
     </div>
     <div class="panel-body">
         {% if alert|default is not empty %}
@@ -13,26 +12,47 @@
         </div>
         {% endif%}
         <div class="form-group">
-            {{ form_label(form.nametthc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_label(form.tthc.nametthc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
-                {{ form_widget(form.nametthc,{'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.nametthc) }}
+                {{ form_widget(form.tthc.nametthc,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.nametthc) }}
             </div>
         </div>
         <div class="form-group">
-            {{ form_label(form.idlinhvuc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_label(form.tthc.idlinhvuc, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
-                {{ form_widget(form.idlinhvuc,{'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.idlinhvuc) }}
+                {{ form_widget(form.tthc.idlinhvuc,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.idlinhvuc) }}
+            </div>
+        </div>
+        <div class="form-group">
+            {{ form_label(form.tthc.iddonvithuly, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.tthc.iddonvithuly,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.tthc.iddonvithuly) }}
             </div>
         </div>
          <div class="form-group">
-            {{ form_label(form.iddonvithuly, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            {{ form_label(form.quyenhan, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
             <div class="col-sm-10">
-                {{ form_widget(form.iddonvithuly,{'attr': {'class': 'form-control'}}) }}
-                {{ form_errors(form.iddonvithuly) }}
+                {{ form_widget(form.quyenhan,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.quyenhan) }}
             </div>
+        </div>
+         <div class="form-group">
+            {{ form_label(form.user, null,{'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+            <div class="col-sm-10">
+                {{ form_widget(form.user,{'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.user) }}
+                <a href="#" onclick="window.open('{{path('tableUser')}}','name','height=500,width=800')">Tìm Nhanh</a>
+                {#<input type="hidden" name="country" value="Norway">#}
+            </div>
+            
+        </div>
+        <div class="form-actions text-right">
+             {{ form_widget(form.submit,{'attr': {'class': 'btn btn-primary'}}) }}
         </div>
     </div>
 </div>
 {{form_end(form)}}
+

@@ -3,8 +3,8 @@
   <entity name="Acme\PermissionBundle\Entity\Vaitroxuly" table="vaitroxuly">
     <indexes>
       <index name="fk_Vaitroxuly_User1_idx" columns="User"/>
-      <index name="fk_Vaitroxuly_TTHC1_idx" columns="TTHC"/>
       <index name="fk_Vaitroxuly_Vaitro1_idx" columns="Vaitro"/>
+      <index name="fk_Vaitroxuly_HoSoTTHC1_idx" columns="HoSoTTHC"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -14,14 +14,14 @@
         <join-column name="Vaitro" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="tthc" target-entity="Tthc">
-      <join-columns>
-        <join-column name="TTHC" referenced-column-name="idTTHC"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="user" target-entity="User">
       <join-columns>
         <join-column name="User" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="hosotthc" target-entity="Hosotthc">
+      <join-columns>
+        <join-column name="HoSoTTHC" referenced-column-name="idHoSoTTHC"/>
       </join-columns>
     </many-to-one>
   </entity>

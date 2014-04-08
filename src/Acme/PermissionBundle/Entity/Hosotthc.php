@@ -50,24 +50,14 @@ class Hosotthc
     private $idhosotthc;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Dinhkemnhanhs
+     * @var \Acme\PermissionBundle\Entity\Tthc
      *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs")
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDinhKemNhan", referencedColumnName="idDinhKemNhanHS")
+     *   @ORM\JoinColumn(name="idTTHC", referencedColumnName="idTTHC")
      * })
      */
-    private $iddinhkemnhan;
-
-    /**
-     * @var \Acme\PermissionBundle\Entity\Dinhkemguihs
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemguihs")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDinhKemGui", referencedColumnName="idDinhKemGuiHS")
-     * })
-     */
-    private $iddinhkemgui;
+    private $idtthc;
 
     /**
      * @var \Acme\PermissionBundle\Entity\Tinhtrangthuly
@@ -90,14 +80,24 @@ class Hosotthc
     private $iddonvithuly;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Tthc
+     * @var \Acme\PermissionBundle\Entity\Dinhkemnhanhs
      *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemnhanhs")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idTTHC", referencedColumnName="idTTHC")
+     *   @ORM\JoinColumn(name="idDinhKemNhan", referencedColumnName="idDinhKemNhanHS")
      * })
      */
-    private $idtthc;
+    private $iddinhkemnhan;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Dinhkemguihs
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemguihs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDinhKemGui", referencedColumnName="idDinhKemGuiHS")
+     * })
+     */
+    private $iddinhkemgui;
 
     /**
      * @var \Acme\PermissionBundle\Entity\Congdan
@@ -214,49 +214,26 @@ class Hosotthc
     }
 
     /**
-     * Set iddinhkemnhan
+     * Set idtthc
      *
-     * @param \Acme\PermissionBundle\Entity\Dinhkemnhanhs $iddinhkemnhan
+     * @param \Acme\PermissionBundle\Entity\Tthc $idtthc
      * @return Hosotthc
      */
-    public function setIddinhkemnhan(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $iddinhkemnhan = null)
+    public function setIdtthc(\Acme\PermissionBundle\Entity\Tthc $idtthc = null)
     {
-        $this->iddinhkemnhan = $iddinhkemnhan;
+        $this->idtthc = $idtthc;
 
         return $this;
     }
 
     /**
-     * Get iddinhkemnhan
+     * Get idtthc
      *
-     * @return \Acme\PermissionBundle\Entity\Dinhkemnhanhs 
+     * @return \Acme\PermissionBundle\Entity\Tthc 
      */
-    public function getIddinhkemnhan()
+    public function getIdtthc()
     {
-        return $this->iddinhkemnhan;
-    }
-
-    /**
-     * Set iddinhkemgui
-     *
-     * @param \Acme\PermissionBundle\Entity\Dinhkemguihs $iddinhkemgui
-     * @return Hosotthc
-     */
-    public function setIddinhkemgui(\Acme\PermissionBundle\Entity\Dinhkemguihs $iddinhkemgui = null)
-    {
-        $this->iddinhkemgui = $iddinhkemgui;
-
-        return $this;
-    }
-
-    /**
-     * Get iddinhkemgui
-     *
-     * @return \Acme\PermissionBundle\Entity\Dinhkemguihs 
-     */
-    public function getIddinhkemgui()
-    {
-        return $this->iddinhkemgui;
+        return $this->idtthc;
     }
 
     /**
@@ -306,26 +283,49 @@ class Hosotthc
     }
 
     /**
-     * Set idtthc
+     * Set iddinhkemnhan
      *
-     * @param \Acme\PermissionBundle\Entity\Tthc $idtthc
+     * @param \Acme\PermissionBundle\Entity\Dinhkemnhanhs $iddinhkemnhan
      * @return Hosotthc
      */
-    public function setIdtthc(\Acme\PermissionBundle\Entity\Tthc $idtthc = null)
+    public function setIddinhkemnhan(\Acme\PermissionBundle\Entity\Dinhkemnhanhs $iddinhkemnhan = null)
     {
-        $this->idtthc = $idtthc;
+        $this->iddinhkemnhan = $iddinhkemnhan;
 
         return $this;
     }
 
     /**
-     * Get idtthc
+     * Get iddinhkemnhan
      *
-     * @return \Acme\PermissionBundle\Entity\Tthc 
+     * @return \Acme\PermissionBundle\Entity\Dinhkemnhanhs 
      */
-    public function getIdtthc()
+    public function getIddinhkemnhan()
     {
-        return $this->idtthc;
+        return $this->iddinhkemnhan;
+    }
+
+    /**
+     * Set iddinhkemgui
+     *
+     * @param \Acme\PermissionBundle\Entity\Dinhkemguihs $iddinhkemgui
+     * @return Hosotthc
+     */
+    public function setIddinhkemgui(\Acme\PermissionBundle\Entity\Dinhkemguihs $iddinhkemgui = null)
+    {
+        $this->iddinhkemgui = $iddinhkemgui;
+
+        return $this;
+    }
+
+    /**
+     * Get iddinhkemgui
+     *
+     * @return \Acme\PermissionBundle\Entity\Dinhkemguihs 
+     */
+    public function getIddinhkemgui()
+    {
+        return $this->iddinhkemgui;
     }
 
     /**

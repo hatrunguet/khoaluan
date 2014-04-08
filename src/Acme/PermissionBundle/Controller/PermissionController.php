@@ -14,7 +14,7 @@ use Acme\PermissionBundle\Form\AddQuyenlinhvucType;
 use Acme\PermissionBundle\Form\viewVaitroType;
 use Acme\PermissionBundle\Form\createFuncType;
 use Acme\PermissionBundle\Form\TTHCType;
-use Acme\PermissionBundle\Form\VaitroxulyType;
+use Acme\PermissionBundle\Form\QuyenTTHCType;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 class PermissionController extends Controller
@@ -58,28 +58,11 @@ class PermissionController extends Controller
         }
         return $this->render('AcmePermissionBundle:Admin:createLinhvuc.html.twig',array('form'=>$form->createView()));
     }
-    public function createTTHCAction(Request $request)
+    public function createQuyenTTHCAction(Request $request)
     {
-        $tthc = new Tthc();
-        $form = $this->createForm(new TTHCType(),$tthc,array(
+        $vaitro = new \Acme\PermissionBundle\Entity\Quyentthc();
+        $form = $this->createForm(new QuyenTTHCType(),$vaitro,array(
             'action'=>  $this->generateUrl('createTTHC')
-        ));
-        $form->handleRequest($request);
-        if ($form->isValid()){            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($tthc);
-            $em->flush();
-            return $this->redirect($this->generateUrl('initialData'));
-        }
-        return $this->render('AcmePermissionBundle:Admin:createTTHC.html.twig',array('form'=>$form->createView()));
-    }
-   
-    public function createVaitroAction(Request $request)
-    {
-        $vaitro = new \Acme\PermissionBundle\Entity\Vaitroxuly();
-        $u = new \Acme\PermissionBundle\Entity\User();
-        $form = $this->createForm(new VaitroxulyType(),$vaitro,array(
-            'action'=>  $this->generateUrl('createVaitro')
         ));
         $form->handleRequest($request);
         if ($form->isValid()){            
@@ -89,17 +72,17 @@ class PermissionController extends Controller
             $em->persist($tthc->getTthc());
             $em->persist($vaitro);
             $em->flush();
-            return $this->redirect($this->generateUrl('permission'));
+            return $this->redirect($this->generateUrl('initialData'));
         }
-        return $this->render('AcmePermissionBundle:Admin:createVaitro.html.twig',array('form'=>$form->createView()));
+        return $this->render('AcmePermissionBundle:Admin:createTTHC.html.twig',array('form'=>$form->createView()));
     }
     public function permissionAction(Request $request)
     {
-           $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Vaitroxuly');
+           $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyentthc');
            $vaitro = $resposity->findAll();
            $form = $this->createFormBuilder()// tao checkbox xoa
-                   ->add('vaitro','entity',array(
-                       'class'=>'AcmePermissionBundle:Vaitroxuly',
+                   ->add('quyenhan','entity',array(
+                       'class'=>'AcmePermissionBundle:Quyentthc',
                        'property'=>'id',
                        'multiple'=>TRUE,
                        'expanded'=>TRUE
@@ -120,9 +103,9 @@ class PermissionController extends Controller
     }
     
     public function editPermissionAction($id,Request $request){
-        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Vaitroxuly');
+        $resposity = $this->getDoctrine()->getRepository('AcmePermissionBundle:Quyentthc');
         $vaitro = $resposity->find($id);
-        $form = $this->createForm(new VaitroxulyType(),$vaitro);
+        $form = $this->createForm(new QuyenTTHCType(),$vaitro);
         $form->handleRequest($request);
         if ($form->isValid()){            
             $em = $this->getDoctrine()->getManager();
@@ -153,20 +136,20 @@ class PermissionController extends Controller
         $users = $resposity->findAll();
         return $this->render('AcmePermissionBundle:Admin:statistic.html.twig',array('users'=>$users));
     }
-    public function createFuncAction(Request $request){
-        $func = new \Acme\PermissionBundle\Entity\Functions();
-        $form = $this->createForm(new createFuncType(),$func,array(
-            'action'=>  $this->generateUrl('createFunc')
-        ));
-        $form->handleRequest($request);
-        if ($form->isValid()){            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($func);
-            $em->flush();
-            return $this->redirect($this->generateUrl('initialData'));
-        }
-        return $this->render('AcmePermissionBundle:Admin:createFunc.html.twig',array('form'=>$form->createView()));
-    }
+//    public function createFuncAction(Request $request){
+//        $func = new \Acme\PermissionBundle\Entity\Functions();
+//        $form = $this->createForm(new createFuncType(),$func,array(
+//            'action'=>  $this->generateUrl('createFunc')
+//        ));
+//        $form->handleRequest($request);
+//        if ($form->isValid()){            
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($func);
+//            $em->flush();
+//            return $this->redirect($this->generateUrl('initialData'));
+//        }
+//        return $this->render('AcmePermissionBundle:Admin:createFunc.html.twig',array('form'=>$form->createView()));
+//    }
     
     
     public function tableUserAction(Request $request)

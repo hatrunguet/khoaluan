@@ -12,7 +12,7 @@ createUser:
     defaults: { _controller: AcmePermissionBundle:Permission:createUser }
 createTTHC:
     pattern:  /function/createTTHC
-    defaults: { _controller: AcmePermissionBundle:Permission:createTTHC }   
+    defaults: { _controller: AcmePermissionBundle:Permission:createQuyenTTHC }   
 createLinhvuc:
     pattern:  /function/createLinhvuc
     defaults: { _controller: AcmePermissionBundle:Permission:createLinhvuc }

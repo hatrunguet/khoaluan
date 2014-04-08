@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Vaitroxuly
  *
- * @ORM\Table(name="vaitroxuly", indexes={@ORM\Index(name="fk_Vaitroxuly_User1_idx", columns={"User"}), @ORM\Index(name="fk_Vaitroxuly_TTHC1_idx", columns={"TTHC"}), @ORM\Index(name="fk_Vaitroxuly_Vaitro1_idx", columns={"Vaitro"})})
+ * @ORM\Table(name="vaitroxuly", indexes={@ORM\Index(name="fk_Vaitroxuly_User1_idx", columns={"User"}), @ORM\Index(name="fk_Vaitroxuly_Vaitro1_idx", columns={"Vaitro"}), @ORM\Index(name="fk_Vaitroxuly_HoSoTTHC1_idx", columns={"HoSoTTHC"})})
  * @ORM\Entity
  */
 class Vaitroxuly
@@ -32,16 +32,6 @@ class Vaitroxuly
     private $vaitro;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Tthc
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="TTHC", referencedColumnName="idTTHC")
-     * })
-     */
-    private $tthc;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\User")
@@ -50,6 +40,16 @@ class Vaitroxuly
      * })
      */
     private $user;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Hosotthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Hosotthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="HoSoTTHC", referencedColumnName="idHoSoTTHC")
+     * })
+     */
+    private $hosotthc;
 
 
 }

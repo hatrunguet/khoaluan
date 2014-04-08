@@ -39,16 +39,6 @@ class Quyentthc
     private $user;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Quyenhan
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Quyenhan")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Quyenhan", referencedColumnName="id")
-     * })
-     */
-    private $quyenhan;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Tthc
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
@@ -57,6 +47,16 @@ class Quyentthc
      * })
      */
     private $tthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Quyenhan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Quyenhan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Quyenhan", referencedColumnName="id")
+     * })
+     */
+    private $quyenhan;
 
 
 
@@ -117,29 +117,6 @@ class Quyentthc
     }
 
     /**
-     * Set quyenhan
-     *
-     * @param \Acme\PermissionBundle\Entity\Quyenhan $quyenhan
-     * @return Quyentthc
-     */
-    public function setQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan = null)
-    {
-        $this->quyenhan = $quyenhan;
-
-        return $this;
-    }
-
-    /**
-     * Get quyenhan
-     *
-     * @return \Acme\PermissionBundle\Entity\Quyenhan 
-     */
-    public function getQuyenhan()
-    {
-        return $this->quyenhan;
-    }
-
-    /**
      * Set tthc
      *
      * @param \Acme\PermissionBundle\Entity\Tthc $tthc
@@ -160,5 +137,28 @@ class Quyentthc
     public function getTthc()
     {
         return $this->tthc;
+    }
+
+    /**
+     * Set quyenhan
+     *
+     * @param \Acme\PermissionBundle\Entity\Quyenhan $quyenhan
+     * @return Quyentthc
+     */
+    public function setQuyenhan(\Acme\PermissionBundle\Entity\Quyenhan $quyenhan = null)
+    {
+        $this->quyenhan = $quyenhan;
+
+        return $this;
+    }
+
+    /**
+     * Get quyenhan
+     *
+     * @return \Acme\PermissionBundle\Entity\Quyenhan 
+     */
+    public function getQuyenhan()
+    {
+        return $this->quyenhan;
     }
 }

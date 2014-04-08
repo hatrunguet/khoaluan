@@ -74,16 +74,6 @@ class Tthc
     private $idvanbanlienquan;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Dinhkemtthc
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDinhKem", referencedColumnName="idDinhKemTTHC")
-     * })
-     */
-    private $iddinhkem;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Donvithuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
@@ -92,6 +82,16 @@ class Tthc
      * })
      */
     private $iddonvithuly;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Dinhkemtthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDinhKem", referencedColumnName="idDinhKemTTHC")
+     * })
+     */
+    private $iddinhkem;
 
     /**
      * @var \Acme\PermissionBundle\Entity\Linhvuc

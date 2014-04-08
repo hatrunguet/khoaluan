@@ -74,16 +74,6 @@ class Tthc
     private $idvanbanlienquan;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Dinhkemtthc
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idDinhKem", referencedColumnName="idDinhKemTTHC")
-     * })
-     */
-    private $iddinhkem;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Donvithuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
@@ -92,6 +82,16 @@ class Tthc
      * })
      */
     private $iddonvithuly;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Dinhkemtthc
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Dinhkemtthc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idDinhKem", referencedColumnName="idDinhKemTTHC")
+     * })
+     */
+    private $iddinhkem;
 
     /**
      * @var \Acme\PermissionBundle\Entity\Linhvuc
@@ -277,29 +277,6 @@ class Tthc
     }
 
     /**
-     * Set iddinhkem
-     *
-     * @param \Acme\PermissionBundle\Entity\Dinhkemtthc $iddinhkem
-     * @return Tthc
-     */
-    public function setIddinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $iddinhkem = null)
-    {
-        $this->iddinhkem = $iddinhkem;
-
-        return $this;
-    }
-
-    /**
-     * Get iddinhkem
-     *
-     * @return \Acme\PermissionBundle\Entity\Dinhkemtthc 
-     */
-    public function getIddinhkem()
-    {
-        return $this->iddinhkem;
-    }
-
-    /**
      * Set iddonvithuly
      *
      * @param \Acme\PermissionBundle\Entity\Donvithuly $iddonvithuly
@@ -320,6 +297,29 @@ class Tthc
     public function getIddonvithuly()
     {
         return $this->iddonvithuly;
+    }
+
+    /**
+     * Set iddinhkem
+     *
+     * @param \Acme\PermissionBundle\Entity\Dinhkemtthc $iddinhkem
+     * @return Tthc
+     */
+    public function setIddinhkem(\Acme\PermissionBundle\Entity\Dinhkemtthc $iddinhkem = null)
+    {
+        $this->iddinhkem = $iddinhkem;
+
+        return $this;
+    }
+
+    /**
+     * Get iddinhkem
+     *
+     * @return \Acme\PermissionBundle\Entity\Dinhkemtthc 
+     */
+    public function getIddinhkem()
+    {
+        return $this->iddinhkem;
     }
 
     /**

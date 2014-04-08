@@ -2,7 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Acme\PermissionBundle\Entity\User" table="user">
     <indexes>
-      <index name="fk_User_Thontincanhan1_idx" columns="Thontincanhan_id"/>
+      <index name="fk_User_Thontincanhan1_idx" columns="Thontincanhan"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="isActive_UNIQUE" columns="isActive"/>
@@ -16,7 +16,7 @@
     <field name="isactive" type="boolean" column="isActive" nullable="true"/>
     <many-to-one field="thontincanhan" target-entity="Thontincanhan">
       <join-columns>
-        <join-column name="Thontincanhan_id" referenced-column-name="id"/>
+        <join-column name="Thontincanhan" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-many field="role" target-entity="Role" inversed-by="user">

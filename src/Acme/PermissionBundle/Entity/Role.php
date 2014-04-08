@@ -15,23 +15,16 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     * @ORM\Column(name="name", type="string", length=45, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="role", type="string", length=45, nullable=false)
+     * @ORM\Column(name="role", type="string", length=45, nullable=true)
      */
     private $role;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mota", type="string", length=45, nullable=true)
-     */
-    private $mota;
 
     /**
      * @var integer
@@ -45,16 +38,40 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\OneToMany(targetEntity="Acme\PermissionBundle\Entity\Groupfunction", mappedBy="role")
+     */
+    private $groupfunction;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="Acme\PermissionBundle\Entity\User", mappedBy="role")
      */
     private $user;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Acme\PermissionBundle\Entity\Functions", inversedBy="role")
+     * @ORM\JoinTable(name="role_has_functions",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="Role_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="Functions_idFunctions", referencedColumnName="idFunctions")
+     *   }
+     * )
+     */
+    private $functionsfunctions;
 
     /**
      * Constructor
      */
     public function __construct()
     {
+        $this->groupfunction = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->functionsfunctions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
@@ -105,29 +122,6 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
     }
 
     /**
-     * Set mota
-     *
-     * @param string $mota
-     * @return Role
-     */
-    public function setMota($mota)
-    {
-        $this->mota = $mota;
-
-        return $this;
-    }
-
-    /**
-     * Get mota
-     *
-     * @return string 
-     */
-    public function getMota()
-    {
-        return $this->mota;
-    }
-
-    /**
      * Get id
      *
      * @return integer 
@@ -135,6 +129,39 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add groupfunction
+     *
+     * @param \Acme\PermissionBundle\Entity\Groupfunction $groupfunction
+     * @return Role
+     */
+    public function addGroupfunction(\Acme\PermissionBundle\Entity\Groupfunction $groupfunction)
+    {
+        $this->groupfunction[] = $groupfunction;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupfunction
+     *
+     * @param \Acme\PermissionBundle\Entity\Groupfunction $groupfunction
+     */
+    public function removeGroupfunction(\Acme\PermissionBundle\Entity\Groupfunction $groupfunction)
+    {
+        $this->groupfunction->removeElement($groupfunction);
+    }
+
+    /**
+     * Get groupfunction
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroupfunction()
+    {
+        return $this->groupfunction;
     }
 
     /**
@@ -168,5 +195,38 @@ class Role implements \Symfony\Component\Security\Core\Role\RoleInterface
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add functionsfunctions
+     *
+     * @param \Acme\PermissionBundle\Entity\Functions $functionsfunctions
+     * @return Role
+     */
+    public function addFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions)
+    {
+        $this->functionsfunctions[] = $functionsfunctions;
+
+        return $this;
+    }
+
+    /**
+     * Remove functionsfunctions
+     *
+     * @param \Acme\PermissionBundle\Entity\Functions $functionsfunctions
+     */
+    public function removeFunctionsfunction(\Acme\PermissionBundle\Entity\Functions $functionsfunctions)
+    {
+        $this->functionsfunctions->removeElement($functionsfunctions);
+    }
+
+    /**
+     * Get functionsfunctions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFunctionsfunctions()
+    {
+        return $this->functionsfunctions;
     }
 }

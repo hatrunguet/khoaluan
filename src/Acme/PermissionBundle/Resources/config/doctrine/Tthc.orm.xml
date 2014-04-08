@@ -21,14 +21,14 @@
         <join-column name="idVanBanLienQuan" referenced-column-name="idVanBanLienQuan"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="iddinhkem" target-entity="Dinhkemtthc">
-      <join-columns>
-        <join-column name="idDinhKem" referenced-column-name="idDinhKemTTHC"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="iddonvithuly" target-entity="Donvithuly">
       <join-columns>
         <join-column name="idDonViThuLy" referenced-column-name="idDonViThuLy"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="iddinhkem" target-entity="Dinhkemtthc">
+      <join-columns>
+        <join-column name="idDinhKem" referenced-column-name="idDinhKemTTHC"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idlinhvuc" target-entity="Linhvuc">

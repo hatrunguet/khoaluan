@@ -39,16 +39,6 @@ class Quyentthc
     private $user;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Quyenhan
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Quyenhan")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Quyenhan", referencedColumnName="id")
-     * })
-     */
-    private $quyenhan;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Tthc
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Tthc")
@@ -57,6 +47,16 @@ class Quyentthc
      * })
      */
     private $tthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Quyenhan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Quyenhan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Quyenhan", referencedColumnName="id")
+     * })
+     */
+    private $quyenhan;
 
 
 }

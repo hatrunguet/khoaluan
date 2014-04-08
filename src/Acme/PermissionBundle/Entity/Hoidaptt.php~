@@ -43,16 +43,6 @@ class Hoidaptt
     private $idhoidaptt;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Congdan
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idCongDan", referencedColumnName="idCongDan")
-     * })
-     */
-    private $idcongdan;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Donvithuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
@@ -71,6 +61,16 @@ class Hoidaptt
      * })
      */
     private $idtthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Congdan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCongDan", referencedColumnName="idCongDan")
+     * })
+     */
+    private $idcongdan;
 
 
 }

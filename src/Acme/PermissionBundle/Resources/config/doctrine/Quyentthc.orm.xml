@@ -15,14 +15,14 @@
         <join-column name="User" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="quyenhan" target-entity="Quyenhan">
-      <join-columns>
-        <join-column name="Quyenhan" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="tthc" target-entity="Tthc">
       <join-columns>
         <join-column name="TTHC" referenced-column-name="idTTHC"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="quyenhan" target-entity="Quyenhan">
+      <join-columns>
+        <join-column name="Quyenhan" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

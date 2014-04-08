@@ -43,16 +43,6 @@ class Hoidaptt
     private $idhoidaptt;
 
     /**
-     * @var \Acme\PermissionBundle\Entity\Congdan
-     *
-     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idCongDan", referencedColumnName="idCongDan")
-     * })
-     */
-    private $idcongdan;
-
-    /**
      * @var \Acme\PermissionBundle\Entity\Donvithuly
      *
      * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Donvithuly")
@@ -71,6 +61,16 @@ class Hoidaptt
      * })
      */
     private $idtthc;
+
+    /**
+     * @var \Acme\PermissionBundle\Entity\Congdan
+     *
+     * @ORM\ManyToOne(targetEntity="Acme\PermissionBundle\Entity\Congdan")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idCongDan", referencedColumnName="idCongDan")
+     * })
+     */
+    private $idcongdan;
 
 
 
@@ -154,29 +154,6 @@ class Hoidaptt
     }
 
     /**
-     * Set idcongdan
-     *
-     * @param \Acme\PermissionBundle\Entity\Congdan $idcongdan
-     * @return Hoidaptt
-     */
-    public function setIdcongdan(\Acme\PermissionBundle\Entity\Congdan $idcongdan = null)
-    {
-        $this->idcongdan = $idcongdan;
-
-        return $this;
-    }
-
-    /**
-     * Get idcongdan
-     *
-     * @return \Acme\PermissionBundle\Entity\Congdan 
-     */
-    public function getIdcongdan()
-    {
-        return $this->idcongdan;
-    }
-
-    /**
      * Set iddonvithuly
      *
      * @param \Acme\PermissionBundle\Entity\Donvithuly $iddonvithuly
@@ -220,5 +197,28 @@ class Hoidaptt
     public function getIdtthc()
     {
         return $this->idtthc;
+    }
+
+    /**
+     * Set idcongdan
+     *
+     * @param \Acme\PermissionBundle\Entity\Congdan $idcongdan
+     * @return Hoidaptt
+     */
+    public function setIdcongdan(\Acme\PermissionBundle\Entity\Congdan $idcongdan = null)
+    {
+        $this->idcongdan = $idcongdan;
+
+        return $this;
+    }
+
+    /**
+     * Get idcongdan
+     *
+     * @return \Acme\PermissionBundle\Entity\Congdan 
+     */
+    public function getIdcongdan()
+    {
+        return $this->idcongdan;
     }
 }
